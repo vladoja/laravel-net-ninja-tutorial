@@ -1,6 +1,27 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+/* Tell Tailwind v4 to load everything */
+@import "tailwindcss";
+
+/* Tell Tailwind what files to scan for class names (Blade, PHP components, etc.) */
+@source "./resources/views/**/*.blade.php";
+@source "./app/View/Components/**/*.php";
+
+/* Optional: your theme tweaks (colors, fonts, etc.) */
+@theme {
+    /* Example custom color */
+    --color-brand: #1e40af;
+}
+
+/* Your custom base styles using @apply */
+@layer base {
+    body {
+        @apply bg-gray-100 text-gray-700;
+        font-family: "Rubik", system-ui, sans-serif;
+    }
+}
+
+/* Example component class using @apply */
+@layer components {
+    .btn {
+        @apply inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700;
+    }
 }
