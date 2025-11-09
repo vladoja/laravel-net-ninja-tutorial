@@ -8,8 +8,16 @@
 
 <body>
     <h2>Welcome to the Ninja Network</h2>
+    <p>Greeting: {{ $greeting }}</p>
     <ul>
-        <li>Ninjas Here</li>
+        @if (count($ninjas) > 0)
+            @foreach ($ninjas as $ninja)
+                <li><a href="#">{{ $ninja['name'] }} - Skill: {{ $ninja['skill'] }}, Age: {{ $ninja['age'] }}</a>
+                </li>
+            @endforeach
+        @else
+            <li>No ninjas found.</li>
+        @endif
     </ul>
 
 </body>
