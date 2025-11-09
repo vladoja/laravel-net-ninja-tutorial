@@ -7,11 +7,10 @@
 
 /* Optional: your theme tweaks (colors, fonts, etc.) */
 @theme {
-    /* Example custom color */
     --color-brand: #1e40af;
 }
 
-/* Your custom base styles using @apply */
+/* Base (global element styles) */
 @layer base {
     body {
         @apply bg-gray-100 text-gray-700;
@@ -38,7 +37,7 @@
         @apply my-2;
     }
 
-    /* header */
+    /* Header (native nesting OK; un-nest if you need older browser support) */
     header {
         @apply bg-white;
 
@@ -51,7 +50,7 @@
         }
     }
 
-    /* form elements */
+    /* Forms */
     form {
         @apply max-w-screen-sm;
     }
@@ -63,10 +62,10 @@
     }
 }
 
-/* Example component class using @apply */
+/* Components (reusable classes) */
 @layer components {
 
-    /* custom classes */
+    /* .app-container  Tailwind also defines a .container class. You’ll override/compete with it. */
     .container {
         @apply max-w-screen-lg mx-auto px-12 py-8;
     }
