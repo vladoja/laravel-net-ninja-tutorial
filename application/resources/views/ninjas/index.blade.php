@@ -12,8 +12,9 @@
     <ul>
         @if (count($ninjas) > 0)
             @foreach ($ninjas as $ninja)
-                <li><a href="{{ url('/ninjas/' . $ninja['id']) }}">{{ $ninja['name'] }} - Skill: {{ $ninja['skill'] }},
-                        Age: {{ $ninja['age'] }}</a>
+                <li>
+                    <p>{{ $ninja['name'] }} - Skill: {{ $ninja['skill'] }}, Age: {{ $ninja['age'] }}</p>
+                    <a href="{{ url('/ninjas/' . $ninja['id']) }}">View Details</a>
                 </li>
             @endforeach
         @else
