@@ -1,12 +1,4 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ninja Network | Home</title>
-</head>
-
-<body>
+<x-layout>
     <h2>Welcome to the Ninja Network</h2>
     <p>Greeting: {{ $greeting }}</p>
     <ul>
@@ -21,7 +13,4 @@
             <li>No ninjas found.</li>
         @endif
     </ul>
-
-</body>
-
-</html>
+</x-layout>
