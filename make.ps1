@@ -25,7 +25,8 @@ param(
         "up", "build", "down", "restart", "ps", "logs", "bash", "sh",
         "artisan", "composer", "tinker", "keygen",
         "migrate", "fresh", "seed", "test", "cache:clear", "route:list", "optimize",
-        "session:db", "cache:db", "psql", "status", "init-laravel", "fix-perms", "web:reload"
+        "session:db", "cache:db", "psql", "status", "init-laravel", "fix-perms", "web:reload",
+        "tw:build", "tw:watch", "tw:check"
     )]
     [string]$Task = "status",
 
@@ -108,6 +109,18 @@ switch ($Task) {
             "init-laravel, fix-perms"
         ) | ForEach-Object { Write-Host "  $_" }
     }
+
+    # Tailwind tasks
+    "tw:build" {
+        Run "$Compose exec $AppSvc bash -lc 'tailwindcss -i resources/css/app.css -o public/css/app.css --minify'"
+    }
+    "tw:watch" {
+        Run "$Compose exec $AppSvc bash -lc 'tailwindcss -i resources/css/app.css -o public/css/app.css --watch'"
+    }
+    "tw:check" {
+        Run "$Compose exec $AppSvc bash -lc 'tailwindcss --help'"
+    }
+
 
     default {
         Write-Host "Unknown task: $Task" -ForegroundColor Red
