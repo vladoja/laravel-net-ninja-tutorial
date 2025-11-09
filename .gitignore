@@ -1,0 +1,113 @@
+# ==========================================
+# GLOBAL / PROJECT ROOT
+# ==========================================
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore VSCode settings (optional)
+.vscode/
+
+# PhpStorm
+.idea/
+
+# Docker artifacts
+docker/**/logs/
+*.pid
+*.log
+*.seed
+*.pid
+
+# Composer vendor (in root if any accidental)
+vendor/
+
+# Node stuff (not used, but ignore for safety)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+
+# ==========================================
+# LARAVEL APPLICATION IGNORE
+# ==========================================
+/application/vendor/
+/application/node_modules/
+/application/public/storage
+/application/public/hot
+/application/storage/*.key
+/application/storage/framework/cache/*
+/application/storage/framework/sessions/*
+/application/storage/framework/views/*
+/application/storage/framework/testing/*
+/application/storage/logs/*
+/application/storage/app/*
+/application/storage/debugbar/*
+/application/storage/oauth-private.key
+/application/storage/oauth-public.key
+
+# Laravel Env files
+/application/.env
+/application/.env.backup
+/application/.env.*
+
+
+# ==========================================
+# COMPOSER / PHP
+# ==========================================
+/application/composer.lock
+/application/phpunit.xml
+/application/phpunit.xml.dist
+
+# Laravel Mix / Vite (not used, but ignore if added later)
+/application/public/build/
+/application/build/
+/application/public/mix-manifest.json
+
+# IDE generated files inside application
+/application/.idea/
+
+
+# ==========================================
+# FRONTEND OPTIONAL (if ever added)
+# ==========================================
+/application/package-lock.json
+/application/yarn.lock
+/application/pnpm-lock.yaml
+/application/public/js/*.map
+/application/public/css/*.map
+
+
+# ==========================================
+# CACHE & TEMP
+# ==========================================
+/application/bootstrap/cache/*.php
+!/application/bootstrap/cache/.gitignore
+/application/storage/*.cache
+/application/storage/*.tmp
+*.cache
+*.tmp
+*.swp
+*.swo
+
+# ==========================================
+# LOGS / DEBUG
+# ==========================================
+*.log
+*.log.*
+/application/storage/logs/*.log
+
+# ==========================================
+# DOCKER ENV FILES (optional)
+# ==========================================
+.env
+.env.*
+
+
+# ==========================================
+# MISC
+# ==========================================
+/application/public/storage
+/application/public/uploads
+/application/tests/.phpunit.result.cache
