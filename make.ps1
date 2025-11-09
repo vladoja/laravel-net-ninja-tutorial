@@ -30,7 +30,8 @@ param(
     )]
     [string]$Task = "status",
 
-    # Extra args for artisan/composer, e.g. .\make.ps1 artisan "make:model Post -m"
+    # ✅ ALL following parameters go to $Args without any validation
+    [Parameter(ValueFromRemainingArguments = $true)]
     [string[]]$Args
 )
 
