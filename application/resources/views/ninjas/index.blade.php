@@ -5,7 +5,7 @@
         @if (count($ninjas) > 0)
             @foreach ($ninjas as $ninja)
                 <li>
-                    <x-card :highlight="true">
+                    <x-card href="{{ url('/ninjas/' . $ninja['id']) }}" :highlight="true">
                         <h3>{{ $ninja['name'] }}</h3>
                         <p>Skill: {{ $ninja['skill'] }}</p>
                     </x-card>
