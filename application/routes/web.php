@@ -7,3 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', fn () => 'Hello from Docker!');
+
+Route::get('/ninjas', function () {return view('ninjas.index'); });

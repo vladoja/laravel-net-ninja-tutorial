@@ -10,6 +10,6 @@
 <body>
     <h1>Welcome to the Ninja Network!</h1>
     <p>Click the button to view the list of ninjas.</p>
-    <a href="" class="btn">View Ninjas</a>
+    <a href="/ninjas" class="btn">View Ninjas</a>
 
 </html>
