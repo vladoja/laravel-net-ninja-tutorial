@@ -10,7 +10,7 @@
 <body class="text-center">
     <header>
         <nav>
-            <h1>Ninja Network</h1>
+            <h1><a href="/">Ninja Network</a></h1>
             <a href="/ninjas">All ninjas</a>
             <a href="/ninjas/create">Create ninja</a>
         </nav>
