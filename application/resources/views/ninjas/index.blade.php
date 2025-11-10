@@ -15,4 +15,5 @@
             <li>No ninjas found.</li>
         @endif
     </ul>
+    {{ $ninjas->links() }}
 </x-layout>
