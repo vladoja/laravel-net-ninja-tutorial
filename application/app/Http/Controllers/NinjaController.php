@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ninja;
+use App\Models\Dojo;
 
 class NinjaController extends Controller
 {
@@ -23,6 +24,7 @@ class NinjaController extends Controller
 
     public function create()
     {
-        return view('ninjas.create');
+        $dojos = Dojo::all();
+        return view('ninjas.create', ['dojos' => $dojos]);
     }
 }
