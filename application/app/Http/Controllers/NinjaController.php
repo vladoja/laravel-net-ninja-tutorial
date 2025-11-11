@@ -9,7 +9,9 @@ class NinjaController extends Controller
 {
     public function index()
     {
-        $ninjas = Ninja::orderBy('created_at', 'desc')->paginate(10);
+        $ninjas = Ninja::with('dojo')->orderBy('created_at', 'desc')->paginate(10);
+        // N+1 Problem avoided with eager loading
+        // $ninjas = Ninja::orderBy('created_at', 'desc')->paginate(10);
         return view('ninjas.index', [ "greeting" => "Hello Ninjas!", "ninjas" => $ninjas]);
     }
 
