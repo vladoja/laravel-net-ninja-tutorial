@@ -14,6 +14,7 @@ class Ninja extends Model
         'name',
         'skill',
         'bio',
+        'dojo_id',
     ];
 
     /** Get the dojo that the ninja belongs to. */

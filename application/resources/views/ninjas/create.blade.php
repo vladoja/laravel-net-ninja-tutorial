@@ -1,7 +1,7 @@
 <x-layout>
     <h2>Create a New Ninja</h2>
 
-    <form action="" method="">
+    <form action="{{ route('ninjas.store') }}" method="POST">
 
         @csrf
         <h2>Create a New Ninja</h2>
