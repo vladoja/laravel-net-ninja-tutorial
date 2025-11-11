@@ -6,7 +6,10 @@
             @foreach ($ninjas as $ninja)
                 <li>
                     <x-card href="{{ route('ninjas.show', ['id' => $ninja['id']]) }}" :highlight="$ninja['skill'] > 70">
-                        <h3>{{ $ninja['name'] }}</h3>
+                        <div>
+                            <h3>{{ $ninja['name'] }}</h3>
+                            <p>Dojo: {{ $ninja->dojo->name ?? 'No Dojo' }}</p>
+                        </div>
                         <p>Skill: {{ $ninja['skill'] }}</p>
                     </x-card>
                 </li>

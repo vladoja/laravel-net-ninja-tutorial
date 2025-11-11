@@ -20,4 +20,11 @@ class Dojo extends Model
         'description',
         'location',
     ];
+
+
+    /** Get the ninjas that belong to the dojo. */
+    public function ninjas()
+    {
+        return $this->hasMany(Ninja::class);
+    }
 }

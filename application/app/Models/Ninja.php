@@ -15,4 +15,10 @@ class Ninja extends Model
         'skill',
         'bio',
     ];
+
+    /** Get the dojo that the ninja belongs to. */
+    public function dojo()
+    {
+        return $this->belongsTo(Dojo::class);
+    }
 }
