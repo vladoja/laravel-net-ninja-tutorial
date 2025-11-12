@@ -1,14 +1,16 @@
 /* Tell Tailwind v4 to load everything */
 @import "tailwindcss";
 
-/* Tell Tailwind what files to scan for class names (Blade, PHP components, etc.) */
-@source "./resources/views/**/*.blade.php";
-@source "./app/View/Components/**/*.php";
-
 /* Optional: your theme tweaks (colors, fonts, etc.) */
 @theme {
     --color-brand: #1e40af;
 }
+
+/* Tell Tailwind what files to scan for class names (Blade, PHP components, etc.) */
+@source "./resources/views/**/*.blade.php";
+@source "./app/View/Components/**/*.php";
+
+
 
 /* Base (global element styles) */
 @layer base {
