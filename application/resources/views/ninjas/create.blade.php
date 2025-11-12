@@ -12,18 +12,18 @@
 
         <!-- ninja Strength -->
         <label for="skill">Ninja Skill (0-100):</label>
-        <input type="number" id="skill" name="skill" required>
+        <input type="number" id="skill" name="skill" value="{{ old('skill') }}" required>
 
         <!-- ninja Bio -->
         <label for="bio">Biography:</label>
-        <textarea rows="5" id="bio" name="bio" required></textarea>
-
+        <textarea rows="5" id="bio" name="bio" required>{{ old('bio') }}</textarea>
         <!-- select a dojo -->
         <label for="dojo_id">Dojo:</label>
         <select id="dojo_id" name="dojo_id" required>
             <option value="" disabled selected>Select a dojo</option>
             @foreach ($dojos as $dojo)
-                <option value="{{ $dojo->id }}">{{ $dojo->name }}</option>
+                <option value="{{ $dojo->id }}" {{ old('dojo_id') == $dojo->id ? 'selected' : '' }}>
+                    {{ $dojo->name }}</option>
             @endforeach
 
         </select>
