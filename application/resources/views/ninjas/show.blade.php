@@ -17,4 +17,12 @@
             <p>This ninja is not affiliated with any dojo.</p>
         @endif
     </div>
+
+    <form action="{{ route('ninjas.destroy', $ninja->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+            Delete Ninja
+        </button>
+    </form>
 </x-layout>
