@@ -1,5 +1,5 @@
 <x-layout>
-    <form action="">
+    <form action="{{ route('register') }}" method="POST" class="">
         @csrf
         <h2>Create a new account</h2>
         <label for="name">Name</label>

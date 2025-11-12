@@ -1,5 +1,5 @@
 <x-layout>
-    <form action="">
+    <form action="{{ route('login') }}" method="POST" class="">
         @csrf
         <h2>Log in to your account</h2>
 
