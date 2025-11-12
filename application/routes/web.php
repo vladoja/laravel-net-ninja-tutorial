@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DojoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NinjaController;
 
@@ -18,3 +19,7 @@ Route::get('/ninjas/{id}', [NinjaController::class, 'show'])->name('ninjas.show'
 Route::post('/ninjas', [NinjaController::class, 'store'])->name('ninjas.store');
 
 Route::delete('/ninjas/{id}', [NinjaController::class, 'destroy'])->name('ninjas.destroy');
+
+
+Route::get('/dojos', [DojoController::class, 'index'])->name('dojos.index');
+Route::get('/dojos/{id}', [DojoController::class, 'show'])->name('dojos.show');
