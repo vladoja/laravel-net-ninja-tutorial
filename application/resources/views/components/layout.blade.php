@@ -8,6 +8,9 @@
 </head>
 
 <body class="text-center">
+    @if (session('success'))
+        <div id="flash" class="p-4 text-center bg-green-50 text-black font-bold">{{ session('success') }}</div>
+    @endif
     <header>
         <nav>
             <h1><a href="/">Ninja Network</a></h1>
