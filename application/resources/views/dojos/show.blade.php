@@ -7,4 +7,8 @@
         <p><strong>Location:</strong> {{ $dojo->location }}</p>
         <p><strong>Description:</strong> {{ $dojo->description }}</p>
     </div>
+    <x-confirm :action="route('dojos.destroy', $dojo)" method="DELETE" title="Delete Dojo?" message="This will permanently remove the dojo."
+        confirmText="Delete">
+        🗑️ Delete Dojo
+    </x-confirm>
 </x-layout>

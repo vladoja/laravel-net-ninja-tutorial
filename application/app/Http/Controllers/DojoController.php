@@ -20,4 +20,12 @@ class DojoController extends Controller
         $ninjas_count = $dojo->ninjas->count();
         return view('dojos.show', compact('dojo', 'ninjas_count'));
     }
+
+    public function destroy($id)
+    {
+        $dojo = Dojo::findOrFail($id);
+        $dojo->delete();
+
+        return redirect()->route('dojos.index')->with('success', 'Dojo deleted successfully!');
+    }
 }

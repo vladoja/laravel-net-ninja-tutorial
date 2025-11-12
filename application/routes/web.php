@@ -23,3 +23,4 @@ Route::delete('/ninjas/{id}', [NinjaController::class, 'destroy'])->name('ninjas
 
 Route::get('/dojos', [DojoController::class, 'index'])->name('dojos.index');
 Route::get('/dojos/{id}', [DojoController::class, 'show'])->name('dojos.show');
+Route::delete('/dojos/{id}', [DojoController::class, 'destroy'])->name('dojos.destroy');
