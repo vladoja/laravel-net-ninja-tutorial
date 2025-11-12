@@ -17,6 +17,8 @@
             <a href="{{ route('ninjas.index') }}">All ninjas</a>
             <a href="{{ route('dojos.index') }}">Dojos</a>
             <a href="{{ route('ninjas.create') }}">Create ninja</a>
+            <a href="{{ route('show.login') }}" class="btn">Login</a>
+            <a href="{{ route('show.register') }}" class="btn">Register</a>
         </nav>
     </header>
 
