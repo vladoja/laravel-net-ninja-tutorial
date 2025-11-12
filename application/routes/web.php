@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DojoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NinjaController;
@@ -7,6 +8,10 @@ use App\Http\Controllers\NinjaController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('show.register');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
 
 Route::get('/hello', fn() => 'Hello from Docker!');
 
