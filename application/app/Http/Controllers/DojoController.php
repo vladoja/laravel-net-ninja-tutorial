@@ -16,7 +16,8 @@ class DojoController extends Controller
 
     public function show($id)
     {
-        $dojo = Dojo::findOrFail($id);
-        return view('dojos.show', compact('dojo'));
+        $dojo = Dojo::with('ninjas')->findOrFail($id);
+        $ninjas_count = $dojo->ninjas->count();
+        return view('dojos.show', compact('dojo', 'ninjas_count'));
     }
 }
