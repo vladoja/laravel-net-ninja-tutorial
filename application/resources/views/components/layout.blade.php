@@ -17,13 +17,17 @@
             <a href="{{ route('ninjas.index') }}">All ninjas</a>
             <a href="{{ route('dojos.index') }}">Dojos</a>
             <a href="{{ route('ninjas.create') }}">Create ninja</a>
-            <a href="{{ route('show.login') }}" class="btn">Login</a>
-            <a href="{{ route('show.register') }}" class="btn">Register</a>
-            <form action="{{ route('logout') }}" method="POST" class="m-0">
-                @csrf
-                <button type="submit" class="btn">Logout</button>
-            </form>
-        </nav>
+            @guest
+                <a href="{{ route('show.login') }}" class="btn">Login</a>
+                <a href="{{ route('show.register') }}" class="btn">Register</a>
+            @endguest
+            @auth
+                <form action="{{ route('logout') }}" method="POST" class="m-0">
+                    @csrf
+                    <button type="submit" class="btn">Logout</button>
+                </form>
+            </nav>
+        @endauth
     </header>
 
     <main class="container">{{ $slot }}</main>
