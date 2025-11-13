@@ -44,4 +44,20 @@ class AuthController extends Controller
     {
         // Login logic here
     }
+
+    public function logout(Request $request)
+    {
+        Log::info('Logout initiated for user ID: ' . Auth::id());
+
+        Auth::logout();
+
+        // invalidate the session
+        $request->session()->invalidate();
+        // regenerate CSRF token
+        $request->session()->regenerateToken();
+
+        Log::info('Logout completed successfully.');
+
+        return redirect()->route('show.login');
+    }
 }
