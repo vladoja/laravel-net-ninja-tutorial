@@ -54,7 +54,7 @@ class AuthController extends Controller
         if ($successfulAuth) {
             // regenerate session to prevent session fixation
             $request->session()->regenerate();
-            return redirect()->intended(route('ninjas.index'));
+            return redirect()->intended(route('ninjas.index'))->with('success', 'Logged in successfully!');
         } else {
             Log::error('Failed login attempt for email: ' . $request->input('email'));
             throw ValidationException::withMessages([
