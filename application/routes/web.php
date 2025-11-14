@@ -20,7 +20,7 @@ Route::get('/hello', fn() => 'Hello from Docker!');
 
 Route::get('/ninjas', [NinjaController::class, 'index'])->name('ninjas.index');
 
-Route::get('/ninjas/create', [NinjaController::class, 'create'])->name('ninjas.create');
+Route::get('/ninjas/create', [NinjaController::class, 'create'])->name('ninjas.create')->middleware('auth');
 
 Route::get('/ninjas/{id}', [NinjaController::class, 'show'])->name('ninjas.show');
 
