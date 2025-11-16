@@ -6,12 +6,12 @@
     'confirmText' => 'Confirm',
     'cancelText' => 'Cancel',
     'variant' => 'danger',
+    'confirmBtnColorClasses' => 'bg-red-600 hover:bg-red-700 text-white',
     'id' => 'dlg-' . Str::ulid(),
 ])
 
 @php
-    $btnClass =
-        $variant === 'danger' ? 'bg-red-600 hover:bg-red-700 text-white' : 'bg-slate-900 hover:bg-black text-white';
+    $btnClass = $variant === 'danger' ? $confirmBtnColorClasses : 'bg-slate-900 hover:bg-black text-white';
 @endphp
 
 {{-- Trigger button (text from slot or confirmText) --}}
@@ -28,9 +28,9 @@
             <button class="px-3 py-2 rounded border">{{ $cancelText }}</button>
         </form>
 
-        <form method="POST" action="{{ $action }}">
+        <form method="{{ in_array(strtoupper($method), ['GET']) ? 'GET' : 'POST' }}" action="{{ $action }}">
             @csrf
-            @if (!in_array(strtoupper($method), ['GET', 'POST']))
+            @if (!in_array(strtoupper($method), ['POST']))
                 @method($method)
             @endif
             <button type="submit" class="px-3 py-2 rounded {{ $btnClass }}">

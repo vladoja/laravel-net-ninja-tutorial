@@ -27,7 +27,7 @@
     </form> --}}
 
     <x-confirm :action="route('ninjas.destroy', $ninja->id)" method="DELETE" title="Delete Ninja?" message="This will permanently remove the ninja."
-        confirmText="Delete">
+        confirmText="Delete" confirmBtnColorClasses="bg-red-600 hover:bg-red-700 text-white">
         🗑️ Delete ninja
     </x-confirm>
 </x-layout>
