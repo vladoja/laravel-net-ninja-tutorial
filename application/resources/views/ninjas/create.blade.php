@@ -4,7 +4,6 @@
     <form action="{{ route('ninjas.store') }}" method="POST">
 
         @csrf
-        <h2>Create a New Ninja</h2>
 
         <!-- ninja Name -->
         <label for="name">Ninja Name:</label>

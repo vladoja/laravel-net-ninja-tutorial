@@ -25,6 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/ninjas/{id}', [NinjaController::class, 'destroy'])->name('ninjas.destroy');
 
     Route::get('/dojos', [DojoController::class, 'index'])->name('dojos.index');
+    // this must go before /dojos/{id} route
+    Route::get('/dojos/create', [DojoController::class, 'create'])->name('dojos.create');
     Route::get('/dojos/{id}', [DojoController::class, 'show'])->name('dojos.show');
+    Route::post('/dojos', [DojoController::class, 'store'])->name('dojos.store');
     Route::delete('/dojos/{id}', [DojoController::class, 'destroy'])->name('dojos.destroy');
 });

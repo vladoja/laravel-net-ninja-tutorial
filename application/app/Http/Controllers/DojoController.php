@@ -28,4 +28,22 @@ class DojoController extends Controller
 
         return redirect()->route('dojos.index')->with('success', 'Dojo deleted successfully!');
     }
+
+    public function create()
+    {
+        return view('dojos.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string|min:20|max:1000',
+        ]);
+
+        Dojo::create($validated);
+
+        return redirect()->route('dojos.index')->with('success', 'Dojo created successfully!');
+    }
 }
