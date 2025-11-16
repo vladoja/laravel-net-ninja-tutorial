@@ -14,10 +14,22 @@
     <header>
         <nav>
             <h1><a href="/">Ninja Network</a></h1>
-            <a href="{{ route('ninjas.index') }}">All ninjas</a>
-            <a href="{{ route('dojos.index') }}">Dojos</a>
-            <a href="{{ route('ninjas.create') }}">Create ninja</a>
-        </nav>
+            @guest
+                <a href="{{ route('show.login') }}" class="btn">Login</a>
+                <a href="{{ route('show.register') }}" class="btn">Register</a>
+            @endguest
+
+            @auth
+                <a href="{{ route('ninjas.index') }}">All ninjas</a>
+                <a href="{{ route('dojos.index') }}">Dojos</a>
+                <a href="{{ route('ninjas.create') }}">Create ninja</a>
+                <span class="border-r-2 pr-2">{{ auth()->user()->name }}</span>
+                <form action="{{ route('logout') }}" method="POST" class="m-0">
+                    @csrf
+                    <button type="submit" class="btn">Logout</button>
+                </form>
+            </nav>
+        @endauth
     </header>
 
     <main class="container">{{ $slot }}</main>
