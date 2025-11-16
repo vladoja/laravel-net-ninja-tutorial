@@ -10,7 +10,7 @@ class DojoController extends Controller
     //
     public function index()
     {
-        $dojos = Dojo::paginate(10);
+        $dojos = Dojo::orderBy('created_at', 'desc')->paginate(10);
         return view('dojos.index', compact('dojos'));
     }
 
