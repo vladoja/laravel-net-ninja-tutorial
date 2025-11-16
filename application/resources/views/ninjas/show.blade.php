@@ -18,11 +18,16 @@
         @endif
     </div>
 
-    <form action="{{ route('ninjas.destroy', $ninja->id) }}" method="POST">
+    {{-- <form action="{{ route('ninjas.destroy', $ninja->id) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
             Delete Ninja
         </button>
-    </form>
+    </form> --}}
+
+    <x-confirm :action="route('ninjas.destroy', $ninja->id)" method="DELETE" title="Delete Ninja?" message="This will permanently remove the ninja."
+        confirmText="Delete">
+        🗑️ Delete ninja
+    </x-confirm>
 </x-layout>

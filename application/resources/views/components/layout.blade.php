@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Ninja Network</title>
 </head>
+<script>
+    // open modal by id
+    function openModal(id) {
+        document.getElementById(id)?.showModal();
+    }
+
+    // optional: close when clicking backdrop
+    document.addEventListener('click', (e) => {
+        const dlg = e.target;
+        if (dlg instanceof HTMLDialogElement && e.target === dlg) dlg.close();
+    });
+</script>
 
 <body class="text-center">
     @if (session('success'))
