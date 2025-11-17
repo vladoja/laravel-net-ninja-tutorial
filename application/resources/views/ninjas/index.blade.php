@@ -1,7 +1,13 @@
 <x-layout>
     <h2>Welcome to the Ninja Network</h2>
-    <p>Greeting: {{ $greeting }}</p>
+    <div class="mb-4 flex justify-end">
+        <x-confirm :action="route('ninjas.create')" method="GET" title="Create Ninja?" message="This will create a new ninja."
+            confirmText="Create" confirmBtnColorClasses="bg-green-600 hover:bg-green-700 text-white">
+            ➕ Create
+        </x-confirm>
+    </div>
     <ul>
+
         @if (count($ninjas) > 0)
             @foreach ($ninjas as $ninja)
                 <li>

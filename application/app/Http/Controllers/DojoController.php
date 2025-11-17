@@ -10,15 +10,18 @@ class DojoController extends Controller
     //
     public function index()
     {
-        $dojos = Dojo::paginate(10);
+        $dojos = Dojo::orderBy('created_at', 'desc')->paginate(10);
+        session()->flash('success', 'Dojo list loaded successfully!');
         return view('dojos.index', compact('dojos'));
     }
 
     public function show($id)
     {
         $dojo = Dojo::with('ninjas')->findOrFail($id);
-        $ninjas_count = $dojo->ninjas->count();
-        return view('dojos.show', compact('dojo', 'ninjas_count'));
+
+        $ninjas = $dojo->ninjas;
+        $ninjas_count = $ninjas->count();
+        return view('dojos.show', compact('dojo', 'ninjas_count', 'ninjas'));
     }
 
     public function destroy($id)
@@ -27,5 +30,45 @@ class DojoController extends Controller
         $dojo->delete();
 
         return redirect()->route('dojos.index')->with('success', 'Dojo deleted successfully!');
+    }
+
+    public function create()
+    {
+        return view('dojos.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string|min:20|max:1000',
+        ]);
+
+        Dojo::create($validated);
+
+        return redirect()->route('dojos.index')->with('success', 'Dojo created successfully!');
+    }
+
+
+    public function edit($id)
+    {
+        $dojo = Dojo::findOrFail($id);
+        return view('dojos.edit', compact('dojo'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $dojo = Dojo::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string|min:20|max:1000',
+        ]);
+
+        $dojo->update($validated);
+
+        return redirect()->route('dojos.show', $dojo)->with('success', 'Dojo updated successfully!');
     }
 }

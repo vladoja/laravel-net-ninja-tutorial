@@ -21,10 +21,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/ninjas', [NinjaController::class, 'index'])->name('ninjas.index');
     Route::get('/ninjas/create', [NinjaController::class, 'create'])->name('ninjas.create');
     Route::get('/ninjas/{id}', [NinjaController::class, 'show'])->name('ninjas.show');
+    Route::get('/ninjas/{id}/edit', [NinjaController::class, 'edit'])->name('ninjas.edit');
+    Route::put('/ninjas/{id}', [NinjaController::class, 'update'])->name('ninjas.update');
     Route::post('/ninjas', [NinjaController::class, 'store'])->name('ninjas.store');
     Route::delete('/ninjas/{id}', [NinjaController::class, 'destroy'])->name('ninjas.destroy');
 
     Route::get('/dojos', [DojoController::class, 'index'])->name('dojos.index');
+    // this must go before /dojos/{id} route
+    Route::get('/dojos/create', [DojoController::class, 'create'])->name('dojos.create');
     Route::get('/dojos/{id}', [DojoController::class, 'show'])->name('dojos.show');
+    Route::get('/dojos/{id}/edit', [DojoController::class, 'edit'])->name('dojos.edit');
+    Route::put('/dojos/{id}', [DojoController::class, 'update'])->name('dojos.update');
+    Route::post('/dojos', [DojoController::class, 'store'])->name('dojos.store');
     Route::delete('/dojos/{id}', [DojoController::class, 'destroy'])->name('dojos.destroy');
 });

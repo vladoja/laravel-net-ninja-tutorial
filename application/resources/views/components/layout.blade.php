@@ -6,10 +6,27 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Ninja Network</title>
 </head>
+<script>
+    // open modal by id
+    function openModal(id) {
+        document.getElementById(id)?.showModal();
+    }
+
+    // optional: close when clicking backdrop
+    document.addEventListener('click', (e) => {
+        const dlg = e.target;
+        if (dlg instanceof HTMLDialogElement && e.target === dlg) dlg.close();
+    });
+</script>
 
 <body class="text-center">
     @if (session('success'))
-        <div id="flash" class="p-4 text-center bg-green-50 text-black font-bold">{{ session('success') }}</div>
+        <div id="flash"
+            class="relative p-4 pr-10 bg-green-100 text-green-900 font-semibold rounded border border-green-300 shadow">
+            <span>{{ session('success') }}</span>
+            <button type="button" onclick="document.getElementById('flash').remove()" class="flash-close-btn"
+                aria-label="Close">&times;</button>
+        </div>
     @endif
     <header>
         <nav>
@@ -20,9 +37,8 @@
             @endguest
 
             @auth
-                <a href="{{ route('ninjas.index') }}">All ninjas</a>
+                <a href="{{ route('ninjas.index') }}">Ninjas</a>
                 <a href="{{ route('dojos.index') }}">Dojos</a>
-                <a href="{{ route('ninjas.create') }}">Create ninja</a>
                 <span class="border-r-2 pr-2">{{ auth()->user()->name }}</span>
                 <form action="{{ route('logout') }}" method="POST" class="m-0">
                     @csrf

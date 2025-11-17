@@ -1,28 +1,40 @@
 <x-layout>
     <h2>{{ $ninja['name'] }}</h2>
 
-    <div class="bg-gray-200 p-4 rounded">
+    <div class="bg-gray-200 p-4 rounded text-left">
         <p><strong>Skill Level:</strong> {{ $ninja['skill'] }}</p>
         <p><strong>About me:</strong></p>
         <p>{{ $ninja['bio'] }}</p>
     </div>
 
-    <div class="border-2 border-dashed bg-white px-4 pb-4 rounded">
+    <div class="border-2 border-dashed bg-white px-4 pb-4 rounded text-left mt-6">
         <h3 class="text-lg font-semibold mt-4 mb-2">Dojo Information</h3>
         @if ($ninja->dojo)
             <p><strong>Name:</strong> {{ $ninja->dojo->name }}</p>
             <p><strong>Location:</strong> {{ $ninja->dojo->location }}</p>
-            <p><strong>Description:</strong> {{ $ninja->dojo->description }}</p>
+            <p><a href="{{ route('dojos.show', ['id' => $ninja->dojo->id]) }}" class="text-blue-600 hover:underline">View
+                    Dojo Details</a></p>
         @else
             <p>This ninja is not affiliated with any dojo.</p>
         @endif
     </div>
 
-    <form action="{{ route('ninjas.destroy', $ninja->id) }}" method="POST">
+    {{-- <form action="{{ route('ninjas.destroy', $ninja->id) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
             Delete Ninja
         </button>
-    </form>
+    </form> --}}
+
+    <div class="mt-4">
+        <a href="{{ route('ninjas.edit', $ninja->id) }}"
+            class="btn inline-block px-3 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white">✏️ Edit Ninja
+        </a>
+        <x-confirm :action="route('ninjas.destroy', $ninja->id)" method="DELETE" title="Delete Ninja?"
+            message="This will permanently remove the ninja." confirmText="Delete"
+            confirmBtnColorClasses="bg-red-600 hover:bg-red-700 text-white">
+            🗑️ Delete ninja
+        </x-confirm>
+    </div>
 </x-layout>
