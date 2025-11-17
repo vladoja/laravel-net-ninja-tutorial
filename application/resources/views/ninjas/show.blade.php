@@ -27,8 +27,14 @@
         </button>
     </form> --}}
 
-    <x-confirm :action="route('ninjas.destroy', $ninja->id)" method="DELETE" title="Delete Ninja?" message="This will permanently remove the ninja."
-        confirmText="Delete" confirmBtnColorClasses="bg-red-600 hover:bg-red-700 text-white">
-        🗑️ Delete ninja
-    </x-confirm>
+    <div class="mt-4">
+        <a href="{{ route('ninjas.edit', $ninja->id) }}"
+            class="btn inline-block px-3 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white">✏️ Edit Ninja
+        </a>
+        <x-confirm :action="route('ninjas.destroy', $ninja->id)" method="DELETE" title="Delete Ninja?"
+            message="This will permanently remove the ninja." confirmText="Delete"
+            confirmBtnColorClasses="bg-red-600 hover:bg-red-700 text-white">
+            🗑️ Delete ninja
+        </x-confirm>
+    </div>
 </x-layout>
