@@ -11,6 +11,7 @@ class DojoController extends Controller
     public function index()
     {
         $dojos = Dojo::orderBy('created_at', 'desc')->paginate(10);
+        session()->flash('success', 'Dojo list loaded successfully!');
         return view('dojos.index', compact('dojos'));
     }
 

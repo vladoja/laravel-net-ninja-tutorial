@@ -21,7 +21,12 @@
 
 <body class="text-center">
     @if (session('success'))
-        <div id="flash" class="p-4 text-center bg-green-50 text-black font-bold">{{ session('success') }}</div>
+        <div id="flash"
+            class="relative p-4 pr-10 bg-green-100 text-green-900 font-semibold rounded border border-green-300 shadow">
+            <span>{{ session('success') }}</span>
+            <button type="button" onclick="document.getElementById('flash').remove()" class="flash-close-btn"
+                aria-label="Close">&times;</button>
+        </div>
     @endif
     <header>
         <nav>
