@@ -8,12 +8,18 @@ use App\Models\Dojo;
 
 class NinjaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $ninjas = Ninja::with('dojo')->orderBy('created_at', 'desc')->paginate(10);
+        $search = trim((string) $request->query('search', ''));
+        $query = Ninja::query()->with('dojo');
+        if ($search !== '') {
+            $query->where('name', 'like', "%{$search}%");
+        }
+
+        $ninjas = $query->orderBy('created_at', 'desc')->paginate(10);
         // N+1 Problem avoided with eager loading
         // $ninjas = Ninja::orderBy('created_at', 'desc')->paginate(10);
-        return view('ninjas.index', ["greeting" => "Hello Ninjas!", "ninjas" => $ninjas]);
+        return view('ninjas.index', ['ninjas' => $ninjas, 'search' => $search]);
     }
 
     public function show($id)

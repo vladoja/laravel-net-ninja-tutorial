@@ -6,6 +6,8 @@
             ➕ Create
         </x-confirm>
     </div>
+
+    <x-ninja-search :value="$search" />
     <ul>
 
         @if (count($ninjas) > 0)
