@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     // this must go before /dojos/{id} route
     Route::get('/dojos/create', [DojoController::class, 'create'])->name('dojos.create');
     Route::get('/dojos/{id}', [DojoController::class, 'show'])->name('dojos.show');
+    Route::get('/dojos/{id}/edit', [DojoController::class, 'edit'])->name('dojos.edit');
+    Route::put('/dojos/{id}', [DojoController::class, 'update'])->name('dojos.update');
     Route::post('/dojos', [DojoController::class, 'store'])->name('dojos.store');
     Route::delete('/dojos/{id}', [DojoController::class, 'destroy'])->name('dojos.destroy');
 });

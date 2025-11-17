@@ -7,8 +7,16 @@
         <p><strong>Location:</strong> {{ $dojo->location }}</p>
         <p><strong>Description:</strong> {{ $dojo->description }}</p>
     </div>
-    <x-confirm :action="route('dojos.destroy', $dojo)" method="DELETE" title="Delete Dojo?" message="This will permanently remove the dojo."
-        confirmText="Delete">
-        🗑️ Delete Dojo
-    </x-confirm>
+    <div class="mt-4">
+
+        <a href="{{ route('dojos.edit', $dojo) }}"
+            class="btn inline-block px-3 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white">
+            ✏️ Edit Dojo
+        </a>
+
+        <x-confirm :action="route('dojos.destroy', $dojo)" method="DELETE" title="Delete Dojo?" message="This will permanently remove the dojo."
+            confirmText="Delete">
+            🗑️ Delete Dojo
+        </x-confirm>
+    </div>
 </x-layout>

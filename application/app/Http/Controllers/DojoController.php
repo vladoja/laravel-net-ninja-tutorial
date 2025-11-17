@@ -47,4 +47,26 @@ class DojoController extends Controller
 
         return redirect()->route('dojos.index')->with('success', 'Dojo created successfully!');
     }
+
+
+    public function edit($id)
+    {
+        $dojo = Dojo::findOrFail($id);
+        return view('dojos.edit', compact('dojo'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $dojo = Dojo::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string|min:20|max:1000',
+        ]);
+
+        $dojo->update($validated);
+
+        return redirect()->route('dojos.show', $dojo)->with('success', 'Dojo updated successfully!');
+    }
 }
