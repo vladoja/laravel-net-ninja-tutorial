@@ -19,6 +19,12 @@ class NinjaController extends Controller
         $ninjas = $query->orderBy('created_at', 'desc')->paginate(10);
         // N+1 Problem avoided with eager loading
         // $ninjas = Ninja::orderBy('created_at', 'desc')->paginate(10);
+
+        if ($request->header('HX-Request')) {
+            return view('ninjas._list', compact('ninjas', 'search'));
+            // return view('ninjas.partials.ninja-list', ['ninjas' => $ninjas, 'search' => $search]);
+        }
+
         return view('ninjas.index', ['ninjas' => $ninjas, 'search' => $search]);
     }
 
